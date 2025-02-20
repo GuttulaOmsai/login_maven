@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> Book Demo</title>
+    <!-- Favicon -->
+    <link rel="icon" href="images/Clinic-Management.png" type="image/png">
+    <meta name="csrf-token" content="IbxPYkGBEDJClIwxpdrvEaZtaZTysAeAiMkVXS9q">
+    <!-- Fonts -->
+    <!-- General CSS Files -->
+    <link rel="stylesheet" type="text/css" href="https://infycare.infyom.com/assets/css/style.css">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://infycare.infyom.com/assets/css/third-party.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/pages.css?id=387be576be001eb8d46d">
+    <link rel="stylesheet" type="text/css" href="https://infycare.infyom.com/assets/css/style.css">
+
+    <!-- CSS Libraries -->
+    </head>
+
+<body
+    class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed toolbar-tablet-and-mobile-fixed aside-enabled aside-fixed">
+<div class="d-flex flex-column flex-root">
+    <div
+        class="d-flex flex-column flex-column-fluid bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed authImage">
+            <div class="d-flex flex-column flex-column-fluid align-items-center justify-content-center p-4">
+        <div class="col-12 text-center">
+            <a href="#" class="image mb-7 mb-sm-10">
+                <img alt="Logo" src="images/Clinic-Management.png" class="img-fluid" style="width:100px" loading="lazy">
+            </a>
+        </div>
+        <div class="width-540"></div>
+        <div class="bg-white rounded-15 shadow-md width-540 px-5 px-sm-7 py-10 mx-auto">
+            <h1 class="text-center mb-7">Sign In</h1>
+            <form method="POST" action="">
+                <input type="hidden" name="_token" value="IbxPYkGBEDJClIwxpdrvEaZtaZTysAeAiMkVXS9q" autocomplete="off">                <div class="mb-sm-7 mb-4">
+                    <label for="email" class="form-label">
+                        Email:<span class="required"></span>
+                    </label>
+                    <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" required placeholder="Enter Email">
+                </div>
+
+                <div class="mb-sm-7 mb-4 position-relative">
+                    <div class="d-flex justify-content-between">
+                        <label for="password" class="form-label">Password:<span
+                                    class="required"></span></label>
+                                                     <a href="https://clinic.mavenerp.in/forgot-password" class="link-info fs-6 text-decoration-none">
+                                Forgot your password?
+                            </a> 
+                                            </div>
+                    <input name="password" type="password" class="form-control" id="password" required placeholder="Enter Password">
+                    <span class="position-absolute d-flex align-items-center top-0 bottom-0 end-0 mt-7 me-4 input-icon input-password-hide cursor-pointer text-gray-600 change-type">
+                        <i class="fas fa-eye-slash"></i>
+                    </span>
+                </div>
+
+                <div class="mb-sm-7 mb-4 form-check">
+                    <input type="checkbox" class="form-check-input" id="remember_me">
+                    <label class="form-check-label" for="remember_me">Remember me</label>
+                </div>
+                <div class="d-grid mb-4">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <!-- <button type="button" class="btn btn-warning w-100 admin-login mt-5" tabindex="4">Admin</button> -->
+                    <div class="row justify-content-between mt-5">
+                        <div class="col-6">
+                            <button type="button" class="btn btn-success w-100 doctor-login" tabindex="4">Doctor</button>
+                        </div>
+                            <div class="col-6">
+                                <button type="button" class="btn btn-danger w-100 patient-login" tabindex="4">Patient</button>
+                            </div>
+                        </div>
+                    </div>
+                <div class="d-flex align-items-center mb-10 mt-4">
+                    <span class="text-gray-700 me-2">New Here?</span>
+                    <a href="https://clinic.mavenerp.in/register" class="link-info fs-6 text-decoration-none">
+                        Create an Account
+                    </a>
+                    
+                </div> 
+            </form>
+        </div>
+    </div>
+    </div>
+</div>
+<script>document.addEventListener("DOMContentLoaded", function () {
+
+    const passwordInput = document.getElementById("password");
+    const emailInput = document.getElementById("email");
+    const togglePassword = document.querySelector(".change-type i");
+
+    if (togglePassword) {
+        togglePassword.addEventListener("click", function () {
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                togglePassword.classList.remove("fa-eye-slash");
+                togglePassword.classList.add("fa-eye");
+            } else {
+                passwordInput.type = "password";
+                togglePassword.classList.remove("fa-eye");
+                togglePassword.classList.add("fa-eye-slash");
+            }
+        });
+    }
+
+
+    const credentials = {
+        doctor: { 
+            email: "doctor@infycare.com", 
+            password: "123456", 
+            redirect: "http://clinic.mavenerp.in/doctors/appointments" 
+        },
+        patient: { 
+            email: "patient@infycare.com", 
+            password: "123456", 
+            redirect: "http://clinic.mavenerp.in/patients/dashboard" 
+        }
+    };
+
+    
+    document.querySelector(".doctor-login").addEventListener("click", function () {
+        emailInput.value = credentials.doctor.email;
+        passwordInput.value = credentials.doctor.password;
+    });
+
+    document.querySelector(".patient-login").addEventListener("click", function () {
+        emailInput.value = credentials.patient.email;
+        passwordInput.value = credentials.patient.password;
+    });
+
+    
+    document.querySelector("form").addEventListener("submit", function (event) {
+        event.preventDefault(); 
+
+        const enteredEmail = emailInput.value.trim();
+        const enteredPassword = passwordInput.value.trim();
+
+        
+        if (enteredEmail === credentials.doctor.email && enteredPassword === credentials.doctor.password) {
+            window.location.href = credentials.doctor.redirect;
+        } else if (enteredEmail === credentials.patient.email && enteredPassword === credentials.patient.password) {
+            window.location.href = credentials.patient.redirect;
+        } else {
+            alert("Invalid email or password. Please try again.");
+        }
+    });
+});
+
+
+</script>
+</body>
+</html>
+
