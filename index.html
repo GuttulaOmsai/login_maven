@@ -37,7 +37,7 @@
         <div class="bg-white rounded-15 shadow-md width-540 px-5 px-sm-7 py-10 mx-auto">
             <h1 class="text-center mb-7">Sign In</h1>
             <form method="POST" action="">
-                <input type="hidden" name="_token" value="IbxPYkGBEDJClIwxpdrvEaZtaZTysAeAiMkVXS9q" autocomplete="off">                <div class="mb-sm-7 mb-4">
+                <input type="hidden" name="_token" value="IbxPYkGBEDJClIwxpdrvEaZtaZTysAeAiMkVXS9q" autocomplete="off"><div class="mb-sm-7 mb-4">
                     <label for="email" class="form-label">
                         Email:<span class="required"></span>
                     </label>
@@ -64,7 +64,7 @@
                 </div>
                 <div class="d-grid mb-4">
                     <button type="submit" class="btn btn-primary">Login</button>
-                    <!-- <button type="button" class="btn btn-warning w-100 admin-login mt-5" tabindex="4">Admin</button> -->
+                     <button type="button" class="btn btn-warning w-100 admin-login mt-5" tabindex="4">Admin</button>
                     <div class="row justify-content-between mt-5">
                         <div class="col-6">
                             <button type="button" class="btn btn-success w-100 doctor-login" tabindex="4">Doctor</button>
@@ -117,6 +117,11 @@
             email: "patient@infycare.com", 
             password: "123456", 
             redirect: "http://clinic.mavenerp.in/patients/dashboard" 
+        },
+        admin: { 
+            email: "admin@infycare.com", 
+            password: "123456", 
+            redirect: "http://clinic.mavenerp.in/patients/dashboard" 
         }
     };
 
@@ -129,6 +134,10 @@
     document.querySelector(".patient-login").addEventListener("click", function () {
         emailInput.value = credentials.patient.email;
         passwordInput.value = credentials.patient.password;
+    });
+    document.querySelector(".admin-login").addEventListener("click", function () {
+        emailInput.value = credentials.admin.email;
+        passwordInput.value = credentials.admin.password;
     });
 
     
@@ -143,12 +152,13 @@
             window.location.href = credentials.doctor.redirect;
         } else if (enteredEmail === credentials.patient.email && enteredPassword === credentials.patient.password) {
             window.location.href = credentials.patient.redirect;
-        } else {
+        } else if (enteredEmail === credentials.admin.email && enteredPassword === credentials.admin.password) {
+            window.location.href = credentials.admin.redirect;
+        }else {
             alert("Invalid email or password. Please try again.");
         }
     });
 });
-
 
 </script>
 </body>
